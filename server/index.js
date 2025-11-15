@@ -7,6 +7,8 @@ const {User}= require('./database/models');
 const userRoutes = require('./routes/user.routes');
 const authRoutes = require('./routes/auth.routes');
 const productRoutes = require('./routes/product.routes');
+// Importam favorite routes 
+const favoriteRoutes = require('./routes/favorite.routes');
 
 const app = express();
 dotenv.config();
@@ -24,8 +26,10 @@ app.get('/', (req, res) => {
 app.use('/users', userRoutes);
 app.use('/auth', authRoutes);
 app.use('/products', productRoutes);
+// Mountam favorite 
+app.use('/favorites', favoriteRoutes);
 
-app.listen(PORT, () => {
+app.listen(PORT, () => {//pornire server
     console.log(`Server successfully started on port ${PORT}`);
 })
 

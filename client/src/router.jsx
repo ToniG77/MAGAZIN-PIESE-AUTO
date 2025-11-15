@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import HomePage from "./pages/HomePage";
 import ProductsPage from "./pages/ProductsPage";
+import FavoritesPage from "./pages/FavoritesPage";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import CreateProductPage from "./pages/CreateProductPage";
@@ -23,12 +24,16 @@ export const router = createBrowserRouter([
         path: "products",
         element: <ProductsPage />,
       },
-      // Protected routes - require authentication
+      {
+        path: "favorites",
+        element: <FavoritesPage />,
+      },
+      
       {
         element: <ProtectedLayout />,
         children: [],
       },
-      // Admin routes - require authentication AND admin role
+      // ncesita auth si rol admin
       {
         element: <AdminRoute />,
         children: [
@@ -42,7 +47,7 @@ export const router = createBrowserRouter([
           },
         ],
       },
-      // Auth routes - require the user to NOT be authenticated
+      // auth rute pentru cei neauth
       {
         element: <AuthLayout />,
         children: [
